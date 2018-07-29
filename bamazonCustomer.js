@@ -55,20 +55,23 @@ var connection = mysql.createConnection({
       id = response.id;
       quantity = response.quantity;
       console.log("id: " + id);
-      connection.query("SELECT * FROM products", function(err, res) {
+      connection.query("SELECT * FROM products WHERE ?", 
+      {
+         item_id: id
+      }, 
+      function(err, res) {
          if (err) throw err;
-         for(i=0;i<res.length;i++){
-            if(res[i].item_id == id &&  quantity < res[i].stock_quantity){
-               console.log(res[i].product_name + " " + res[i].price + " " + res[i].stock_quantity)
-               item = res[i].product_name;
-               price = res[i].price;
-               newQuantity = res[i].stock_quantity - quantity;
-               total = res[i].price * quantity;
+        
+            if(quantity < res[0].stock_quantity){  
+               item = res[0].product_name;
+               price = res[0].price;
+               newQuantity = res[0].stock_quantity - quantity;
+               total = res[0].price * quantity;
                startPurchase();
-            } else if (res[i].item_id == id && quantity > res[i].stock_quantity){
+            } else if (quantity > res[0].stock_quantity){
                console.log("Product unavailable")
                setTimeout(readProducts, 2000)
-            }
+            
             
          }
         
@@ -80,7 +83,7 @@ var connection = mysql.createConnection({
    inquirer.prompt([
       {
          type: "confirm",
-         message: "Are you sure you'd like to purchase " + item + " for " + total + "?",
+         message: "Are you sure you'd like to purchase " + quantity + " " + item + "(s) for " + total + "?",
          name: "confirm"
       }
    ]).then(function(response){
