@@ -110,14 +110,24 @@ function addInventory(){
 }
 
 function addNew(){
+   var departments = [];
+   connection.query("SELECT * FROM departments"), function(err, res){
+      if (err) throw err;
+      for(i=0;i<res.length;i++){
+         departments.push(res[i].department_name);
+      }
+      console.log(departments);
+   }
    inquirer.prompt([
       {
          name: "product",
          message: "Enter name of new item you would like to add"
       },
       {
+         type: "list",
          name: "department",
-         message: "Enter name of department of new item"
+         message: "Select name of department of new item",
+         choices: departments
       },
       {
          name: "price",
@@ -133,7 +143,8 @@ function addNew(){
       product_name: result.product,
       department_name: result.department,
       price: result.price,
-      stock_quantity: result.stock
+      stock_quantity: result.stock,
+      product_sales: 0.00
    }, function(err, res){
       console.log(res.affectedRows + " product inserted!\n");
    }

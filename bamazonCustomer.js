@@ -67,6 +67,7 @@ var connection = mysql.createConnection({
                price = res[0].price;
                newQuantity = res[0].stock_quantity - quantity;
                total = res[0].price * quantity;
+               productTotal = total + res[0].product_sales;
                startPurchase();
             } else if (quantity > res[0].stock_quantity){
                console.log("Product unavailable")
@@ -116,7 +117,8 @@ var connection = mysql.createConnection({
      "UPDATE products SET ? WHERE ?",
      [
        {
-         stock_quantity: newQuantity
+         stock_quantity: newQuantity,
+         product_sales: productTotal
        },
        {
          item_id: id 
