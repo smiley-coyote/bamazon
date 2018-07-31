@@ -56,7 +56,8 @@ var connection = mysql.createConnection({
       var newArr = [];
       var totalProfits;
      for(i=0;i<res.length;i++){
-      totalProfits = res[i].product_sales - res[i].over_head_costs;
+      var nTotal = res[i].product_sales - res[i].over_head_costs;
+      totalProfits = nTotal.toFixed(2);
       res[i].total_profits = totalProfits;
       newArr.push(res[i]);
      }
