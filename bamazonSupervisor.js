@@ -36,7 +36,15 @@ var connection = mysql.createConnection({
           viewProducts();
        }
        if(results.action == "Create New Department"){
-          createNewDept();
+         connection.query("SELECT * FROM departments", function(err, res){
+            if (err) throw err;
+            console.log("Current departments: ")
+            console.log("-------------------")
+            for(i=0;i<res.length;i++){
+               console.log(res[i].department_name);
+            }
+         })
+          setTimeout(createNewDept, 500);
        }
     })
  }
@@ -52,6 +60,7 @@ var connection = mysql.createConnection({
       res[i].total_profits = totalProfits;
       newArr.push(res[i]);
      }
+     console.log("\n")
       console.table(newArr);
       setTimeout(runSupervisor, 1500);
    })

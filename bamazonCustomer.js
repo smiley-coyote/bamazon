@@ -124,6 +124,5 @@ var connection = mysql.createConnection({
          item_id: id 
        }
      ],function(err, res){
-      console.log(" products updated!\n");
      }
    )};

@@ -111,13 +111,13 @@ function addInventory(){
 
 function addNew(){
    var departments = [];
-   connection.query("SELECT * FROM departments"), function(err, res){
+   connection.query("SELECT * FROM departments", function(err, res){
       if (err) throw err;
       for(i=0;i<res.length;i++){
          departments.push(res[i].department_name);
       }
-      console.log(departments);
-   }
+      
+   })
    inquirer.prompt([
       {
          name: "product",
