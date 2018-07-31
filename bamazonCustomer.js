@@ -34,7 +34,7 @@ var connection = mysql.createConnection({
 
  function readProducts() {
    console.log("Selecting all products...\n");
-   connection.query("SELECT * FROM products", function(err, res) {
+   connection.query("SELECT products.item_id, products.product_name, products.department_name, products.price, products.stock_quantity FROM products", function(err, res) {
      if (err) throw err;
      console.table(res);
      startCustomer();
