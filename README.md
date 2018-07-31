@@ -11,3 +11,6 @@
 * inquirer (https://www.npmjs.com/package/inquirer)
 * mysql (https://www.npmjs.com/package/mysql)
 * console.table (https://www.npmjs.com/package/console.table)
+
+### Video demo
+* https://drive.google.com/file/d/1ffGzFzFyZCrT7QDLQzOxF-Y2QSgKV4Dl/view

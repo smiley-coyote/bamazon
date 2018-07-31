@@ -66,7 +66,8 @@ var connection = mysql.createConnection({
                item = res[0].product_name;
                price = res[0].price;
                newQuantity = res[0].stock_quantity - quantity;
-               total = res[0].price * quantity;
+               var nTotal = res[0].price * quantity;
+               total = nTotal.toFixed(2);
                productTotal = total + res[0].product_sales;
                startPurchase();
             } else if (quantity > res[0].stock_quantity){
