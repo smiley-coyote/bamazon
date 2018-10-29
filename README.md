@@ -3,7 +3,7 @@
 Welcome to Bamazon! This is a Node.js based app that pulls and updates data from mySQL database tables.
 
 ## Instructions
-This is a back end app that has no front end. In order to run, you'll need to do an "npm install" to install all of the dependencies. Once this completes, within the terminal run one of the files (bamazonCustomer.js, bamazonManager.js, or bamazonSupervisor.js) with node ("node <file name>"). 
+This is a back end app that has no front end. In order to run, you'll need to do an "npm install" to install all of the dependencies. Once this completes, within the terminal run one of the files (bamazonCustomer.js, bamazonManager.js, or bamazonSupervisor.js) with node ("node [file name]"). 
 
 ### Each .js file asks a series of questions within the console.
 * bamazonCustomer.js - You are the customer and are asked what item you would like to purchase and the quantity. A table is displayed with the item ids, item names, department names, prices, and quantities available. Once you decide on an item to purchase you enter the item ID number and quantity number. The costs are totaled up, and once the purchase is confirmed the quantity and total profits are updated in the database.
